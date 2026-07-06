@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Rent Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"><body>
+
+    <div class="container">
+
+        <h1>🏠 House Rent Prediction</h1>
+        <p>Enter Property Details</p>
+
+        <form action="/predict" method="POST">
+
+            <div class="input-group">
+                <label>City</label>
+                <input type="text" name="city" placeholder="Enter City" required>
+            </div>
+
+            <div class="input-group">
+                <label>Area (sq.ft)</label>
+                <input type="number" name="area" placeholder="Enter Area" required>
+            </div>
+
+            <div class="input-group">
+                <label>Beds</label>
+                <input type="number" name="beds" placeholder="No. of Beds" required>
+            </div>
+
+            <div class="input-group">
+                <label>Bathrooms</label>
+                <input type="number" name="bathrooms" placeholder="No. of Bathrooms" required>
+            </div>
+
+            <div class="input-group">
+                <label>Area Rate</label>
+                <input type="number" step="0.01" name="area_rate" placeholder="Area Rate" required>
+            </div>
+
+            <button type="submit">Predict Rent</button>
+
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            {{ prediction }}
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
